@@ -63,46 +63,6 @@ def detailimagedownload(pictureurl):
                      attachment_filename=pictureurl,
                      as_attachment=True)
 
-
-#계량기 정보 입력
-def insert_meter(self,meter):
-    # 결과를 저장할 변수
-    result = False
-    self.connect()
-
-    data = self.cursor.execute('select serial_cd from electricity_meter_tb where serial_cd = %s',
-                               (meter['serial_cd']))
-    print('data::',type(data),' ',data)
-
-    if data == 0:
-
-        # data = self.cursor.fetchone()
-        # itemid = 1
-        # # 데이터가 존재하는 경우는 가장 큰 itemid+1
-        # if data[0] != None:
-        #     itemid = int(data[0]) + 1
-        try:
-
-            self.cursor.execute('insert into electricity_meter_tb '+
-                                '(serial_cd, supply_type, typename,'+
-                                ' electricity_filename, region_cd) '+
-                                'values(%s,%s,%s,%s,%s)',
-                                (meter['serial_cd'], meter['supply_type'], meter['typename'],
-                                 meter['electricity_filename'],meter['region_cd']))
-            #성공여부 확인 rowcount는 영향받은 행의 개수
-            if self.cursor.rowcount >= 1:
-                result = True
-
-        except Exception as e:
-            print(e)
-            result = False
-
-
-    self.con.commit()
-    self.close()
-
-    return result
-
 # 바코드 등록
 @app.route('/insertbarcode', methods=['GET', 'POST'])
 def insertbarcode():
@@ -134,28 +94,22 @@ def insertElectricityMeter():
         f = request.files['pictureurl']
         f.save('./static/img/' + f.filename)
 
+        ocrModel = model()
+        result_roi, sava_images, serial_cd = ocrModel.get_roi_images('./static/img', f.filename)
+
+        if result_roi != 1:
+            return jsonify(response)
 
         # 받은 데이터
         meter = {}
         meter['updatedate'] = request.form['updatedate']
 
-        meter['serial_cd'] = '0000000'
-        meter['supply_type'] = '교류단상2선식'
+        meter['serial_cd'] = serial_cd
+        meter['supply_type'] = '교류3상4선식'
         meter['typename'] = 'g-type'
         meter['electricity_filename'] = f.filename
         meter['region_cd'] = '01'
         print("insertElectricityMeter] 계량기정보 저장::", meter)
-
-        #roi 결과 이미지 목록을 DB에 저장하기
-        md = model()
-        roi_images = md.get_roi_images('./static/img', f.filename)
-        print('insertElectricityMeter::sava_files:', roi_images)
-
-
-
-        # 이미지 가져오기
-        # TODO:ocr인식
-
 
         dao = db.Dao()
 
@@ -165,9 +119,9 @@ def insertElectricityMeter():
         roi_result = False
         if result == True:
             #roi 결과 이미지 목록을 DB에 저장하기
-            for img_name in roi_images:
+            for img_name in sava_images:
                 img_info = {}
-                img_info['serial_cd'] = '0000000' #인식후 변경
+                img_info['serial_cd'] = serial_cd #인식후 변경
                 img_info['pre_filename'] = img_name
                 roi_result = dao.insert_roi_image(img_info)
 
@@ -176,12 +130,8 @@ def insertElectricityMeter():
                     result = False
                     break;
 
-
-
-
-
     # 출력의 형태 : json
-    response = {'result': result}
+    response = {'result': result, 'serial_cd' : serial_cd}
     return jsonify(response)
 
 # 자신의 IP로 접속할 수 있도록 서버를 구동
