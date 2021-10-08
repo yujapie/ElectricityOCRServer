@@ -4,11 +4,15 @@ from flask import send_file
 from flask import render_template
 from flask import jsonify
 from werkzeug.serving import WSGIRequestHandler
+
+import sys, os
+# 상위 경로(Project/)를 system PATH에 추가
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from model.OCRModel import OCRModel
+
 WSGIRequestHandler.protocol_version = "HTTP/1.1"
 
 from common import db
-from model import model
-
 
 # 앱 생성
 app = Flask(__name__)
@@ -28,7 +32,7 @@ def list_page():
     response = {'result': result, 'data': data}
     return jsonify(response)
 
-# 파일 다운로드
+# 조회화면의 이미지파일 다운로드
 @app.route('/listimagedownload/<pictureurl>')
 def listimagedownload(pictureurl):
     file_name = 'static/img/' + pictureurl
@@ -40,7 +44,7 @@ def listimagedownload(pictureurl):
                      attachment_filename=pictureurl,
                      as_attachment =True)
 
-# 상세페이지
+# 상세화면
 @app.route('/detail/<serial_id>')
 def detail(serial_id):
     dao = db.Dao()
@@ -51,16 +55,16 @@ def detail(serial_id):
 
 
 
-# 파일 다운로드
+# 조회화면의 이미지파일 다운로드
 @app.route('/detailimagedownload/<pictureurl>')
 def detailimagedownload(pictureurl):
     file_name = 'static/img/' + pictureurl
-    print("상세파일 이미지 다운로드")
+    print("상세파일 이미지 다운로드 : ", pictureurl)
     # file_name : 실제 파일의 경로(server쪽)
     # mimetypes : 파일의 종류
     # attachment_filename : 다운로드 되었을 때의 파일 이름(client쪽)
     return send_file(file_name, mimetype='application/octect-stream',
-                     attachment_filename=pictureurl,
+                     download_name=pictureurl,
                      as_attachment=True)
 
 # 바코드 등록
@@ -93,10 +97,8 @@ def insertElectricityMeter():
     if request.method == 'POST':
         f = request.files['pictureurl']
         f.save('./static/img/' + f.filename)
-
-        ocrModel = model()
+        ocrModel = OCRModel()
         result_roi, sava_images, serial_cd = ocrModel.get_roi_images('./static/img', f.filename)
-
         if result_roi != 1:
             return jsonify(response)
 

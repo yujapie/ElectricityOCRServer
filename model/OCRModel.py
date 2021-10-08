@@ -1,9 +1,9 @@
 import os
-from android_prep import prep
+from model.android_prep import prep
 
 import pytesseract
 
-class model:
+class OCRModel:
     #ROI 결과를 반환하는 함수
     def get_roi_images(self,file_path,file_name):
         sava_images = []
