@@ -9,16 +9,17 @@ class model:
         sava_images = []
 
         pr = prep(file_path,file_name.split('.')[0])
-        result_roi = pr.no_box()
+        # 전처리 및 문자 인식
+        result_roi, serial_id = pr.no_box()
 
-        if result_roi != 0:
-            sava_images = self.get_file_list(file_path,file_name)
+        if result_roi == 1:
+            sava_images = self.get_file_list(file_path, file_name)
 
-        roi_files = sava_images
-        return roi_files
+
+        return result_roi, sava_images, serial_id
 
     #파일경로에 파일이름이 포함된 파일 목록을 만들어주는 메소드
-    def get_file_list(self,file_path,file_name):
+    def get_file_list(self, file_path, file_name):
 
         #확장자 제거
         file_name = file_name.split('.')[0]
@@ -30,11 +31,3 @@ class model:
             if name.find(file_name) > -1 and len(name.split('_'))==3:
                 save_files.append(name)
         return save_files
-
-
-
-
-if __name__ == '__main__':
-    md = model()
-    r = md.get_roi_images('./static/img', '847207D64AF9_P1134.jpg')
-    print(r)
