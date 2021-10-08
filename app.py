@@ -7,7 +7,10 @@ from werkzeug.serving import WSGIRequestHandler
 WSGIRequestHandler.protocol_version = "HTTP/1.1"
 
 from common import db
-from model import model
+import sys, os
+# 상위 경로(Project/)를 system PATH에 추가
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from model.OCRModel import OCRModel
 
 
 # 앱 생성
@@ -94,7 +97,7 @@ def insertElectricityMeter():
         f = request.files['pictureurl']
         f.save('./static/img/' + f.filename)
 
-        ocrModel = model()
+        ocrModel = OCRModel()
         result_roi, sava_images, serial_cd = ocrModel.get_roi_images('./static/img', f.filename)
 
         if result_roi != 1:
