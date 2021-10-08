@@ -1,7 +1,7 @@
 import os
-from android_prep import prep
 
-import pytesseract
+from model.android_prep import prep
+
 
 class OCRModel:
     #ROI 결과를 반환하는 함수

@@ -1,13 +1,15 @@
 # flask 웹 서버를 만들기 위해서 필수
 from flask import Flask, request
-from flask import send_file
-from flask import render_template
 from flask import jsonify
+from flask import render_template
+from flask import send_file
 from werkzeug.serving import WSGIRequestHandler
+
 WSGIRequestHandler.protocol_version = "HTTP/1.1"
 
 from common import db
 import sys, os
+
 # 상위 경로(Project/)를 system PATH에 추가
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from model.OCRModel import OCRModel
