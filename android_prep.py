@@ -177,7 +177,7 @@ class prep:
                     if not mc:
                         break
                     else:
-                        serial_id = mc[0][2]
+                        serial_id = ''.join(mc[0])
                         break
 
         src_roi[self.src_name] = data_roi_coo

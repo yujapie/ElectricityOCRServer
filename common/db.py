@@ -5,6 +5,7 @@ from flask import g
 class Dao:
 
     def __init__(self):
+        # 조회화면 : 전력량계량기, 모뎀바코드 정보 조회
         self.__SELECT_ALL = '''
         select electricity_meter_tb.serial_cd as serial_cd,
         modem_tb.modem_cd as modem_cd ,
@@ -16,7 +17,7 @@ class Dao:
         where electricity_meter_tb.del_flag = 0
         ORDER BY electricity_save_date DESC;
         '''
-
+        # 상세화면 : 전력량계량기, 모뎀 정보 조회
         self.__SELECT_ONE = '''
         select  
         electricity_meter_tb.serial_cd as serial_cd,  
@@ -33,7 +34,8 @@ class Dao:
         where electricity_meter_tb.del_flag = 0 
         and electricity_meter_tb.serial_cd =  %s 
         '''
-
+        
+        # 상세화면 : 이미지 전처리 파일 조회
         self.__SELECT_PRE_IMAGE = '''
         select 
         electricity_preprocessing_tb.pre_filename as pre_filename
