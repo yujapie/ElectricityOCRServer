@@ -1,16 +1,18 @@
-# :electric_plug: 전력량계량기 OCR프로젝트
+# ⚡ 전력량계량기 OCR프로젝트
 
-- :electric_plug:전력량계량기 OCR프로젝트
+- **⚡ 전력량계량기 OCR프로젝트**
   - 📁Repository 구조
   - 📌프로젝트 개요
-  - 🕑 개발 기간
-  - 🛠 프로젝트 구조
-  - ✅ 분석 환경 및 도구
-- ⚙Server 구현
+  - 🕑개발 기간
+  - 🛠프로젝트 구조
+  - ✅분석 환경 및 도구
+- **⚙ Server 구현**
   - 전처리 및 OCR 모델
   - DB 구축
   - Server 구현(Flask)
-- [📱Service 구현(Android)](https://github.com/yujapie/ElectricityMeterOCR) 👈Repository 이동
+- **[📱 Android 구현](https://github.com/yujapie/ElectricityMeterOCR) 👈Repository 이동**
+
+- **✨ 애플리케이션 실행영상**
 
 
 
@@ -36,7 +38,7 @@ ElectricityOCRServer
 
 ### 1) 프로젝트 주제 및 선정 배경
 
-[초기 기획서]()
+[프로젝트 초기 계획서](https://magical-goldenrod-6ed.notion.site/65b0ddbbdc774add97819917c1eb5dd9)
 
 전력량계량기에는 전력량을 한국전력공사에 전송하도록 해주는 통신 모뎀이 부착됨. 전력량 정보를 송수신 및 관리를 위해서 전력량계량기의 기기정보와 통신 모뎀의 바코드 정보를 데이터베이스에 저장 해야함.
 
@@ -74,7 +76,7 @@ OCR인식을 통해 손쉽게 읽어 들여 모뎀 설치의 기재시간을 줄
 
 
 
-## 🕑 개발 기간
+## 🕑개발 기간
 
 - 2021.8.31 ~ 10.6 (5주)
 
@@ -82,20 +84,20 @@ OCR인식을 통해 손쉽게 읽어 들여 모뎀 설치의 기재시간을 줄
 | ----------------- | --------------- | --------------------------------------------------------- | -------------------------- |
 | **사전 기획**     | **▶** 8/31~9/6  | **▶** 기획서 작성                                         | **▶** OpenCV 학습          |
 | **데이터 수집**   | **▶** 8/31~9/15 | **▶** 외부 데이터 수집                                    | **▶** 협약기업 데이터 제공 |
-| **데이터 전처리** | **▶** 9/6~10/6  | **▶** OCR 모델 개선을 위한        이미지 전처리           |                            |
+| **데이터 전처리** | **▶** 9/6~10/6  | **▶** OCR 모델 개선을 위한 이미지 전처리                  |                            |
 | **모델링**        | **▶** 9/24~10/4 | **▶** OCR모델 인식                                        |                            |
 | **서비스 구축**   | **▶** 9/24~10/6 | **▶** 모바일 서비스 시스템 설계  **▶** 모바일 플랫폼 구현 |                            |
 | **총 개발기간**   | **▶** 8/31~10/6 |                                                           |                            |
 
 
 
-## 🛠 프로젝트 구조
+## 🛠프로젝트 구조
 
 ![image](https://user-images.githubusercontent.com/58774664/136537726-bc984ae7-7562-4519-abc0-c8ef9ccaec4d.png)
 
 
 
-## ✅ 분석 환경 및 도구
+## ✅분석 환경 및 도구
 
 - HW/Server
   - Window (ver 10 / CPU i7 / RAM 16)
@@ -112,25 +114,27 @@ OCR인식을 통해 손쉽게 읽어 들여 모뎀 설치의 기재시간을 줄
   - eXERD
 - IDE
   - PyCharm
-  - AndroidStudio
+  - Android Studio
   - DBeaver
   - Eclipse
 - Library
   - OpenCV (ver 4.5)
-  - TensorOCR
+  - TensorOCR (=Tesseract)
   - Numpy (ver 1.19)
 
 
 
 # ⚙Server
 
-### 1) 전처리 및 OCR 모델
+## 1.전처리 및 OCR 모델
 
-전처리 과정 추가
+[이미지 처리과정](https://whimsical.com/ocr-Sw9iyj7nFJ9JicHAZP1dAT)
 
 
 
-### 2) DataBase
+
+
+## 2.DataBase
 
 - [DB 구축 SQL](https://github.com/2SEHI/OCR-Text-Detection/blob/main/db/CreateTableSQL.sql)
 
@@ -140,12 +144,27 @@ OCR인식을 통해 손쉽게 읽어 들여 모뎀 설치의 기재시간을 줄
 
 ![image](https://user-images.githubusercontent.com/58774664/136549647-fcb7a7e7-2fcf-42b3-ba1f-fa974d161d5a.png)
 
-### 3) BackEnd
+## 3.Controller
 
-[API 문서](https://magical-goldenrod-6ed.notion.site/API-5b7ebb411af64518a58d5e12d65899bd)
-
-
-
-## [📱Service 구현(Android)](https://github.com/yujapie/ElectricityMeterOCR) 👈Repository 이동
+- [API 문서](https://magical-goldenrod-6ed.notion.site/API-5b7ebb411af64518a58d5e12d65899bd)
 
 
+
+# [📱Android 구현](https://github.com/yujapie/ElectricityMeterOCR) 👈Repository 이동
+
+## 1.Flow Chart
+
+- [화면흐름도(Flow Chart)](https://whimsical.com/ocr-HQB6W3DWodaLZ3mFEXkQZg)
+
+![image](https://user-images.githubusercontent.com/58774664/136650937-20e6d1e9-8a0d-4dce-9894-3ae28ffd1251.png)
+
+## 2.모뎀 바코드 인식
+
+-  Google Mobile Vision API 의 [Barcode scanning 라이브러리](https://developers.google.com/ml-kit/vision/barcode-scanning) 사용하여 모뎀의 바코드 정보를 읽어냄
+
+- 정확도
+
+
+
+# ✨애플리케이션 실행영상
+https://user-images.githubusercontent.com/58774664/136656792-0b65ea74-449f-4061-b1e9-e3987fb32381.mp4
