@@ -27,8 +27,6 @@ ElectricityOCRServer
 |	└── 📃android_prep.py					# 이미지 전처리 및 OCR모델
 ├── 📁static
 |	└──📁 img					        # 이미지 저장폴더
-├── 📁templates
-|	└── 📃index.html
 └──📃app.py					                # Service연결 Controller
 ```
 
@@ -163,8 +161,6 @@ https://user-images.githubusercontent.com/58774664/136685783-69435e2e-8580-4254-
 ## 2.모뎀 바코드 인식
 
 -  Google Mobile Vision API 의 [Barcode scanning 라이브러리](https://developers.google.com/ml-kit/vision/barcode-scanning) 사용하여 모뎀의 바코드 정보를 읽어냄
-
-- 정확도
 
 
 
