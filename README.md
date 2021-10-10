@@ -128,7 +128,9 @@ OCR인식을 통해 손쉽게 읽어 들여 모뎀 설치의 기재시간을 줄
 
 ## 1.전처리 및 OCR 모델
 
-[이미지 처리과정](https://whimsical.com/ocr-Sw9iyj7nFJ9JicHAZP1dAT)
+[이미지 처리과정](https://magical-goldenrod-6ed.notion.site/OCR-d23cbc60d81c4265af7a6b6fa5c7588c)
+
+https://user-images.githubusercontent.com/58774664/136685783-69435e2e-8580-4254-8dfe-6b836aa5e577.mp4
 
 
 
