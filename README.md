@@ -156,7 +156,7 @@ https://user-images.githubusercontent.com/58774664/136685783-69435e2e-8580-4254-
 
 - [화면흐름도(Flow Chart)](https://whimsical.com/ocr-HQB6W3DWodaLZ3mFEXkQZg)
 
-![image](https://user-images.githubusercontent.com/58774664/136650937-20e6d1e9-8a0d-4dce-9894-3ae28ffd1251.png)
+![화면 FLowChart](https://user-images.githubusercontent.com/58774664/136877051-3b9d2816-e4bd-41fa-a76d-b317ec119d53.png)
 
 ## 2.모뎀 바코드 인식
 
@@ -165,4 +165,4 @@ https://user-images.githubusercontent.com/58774664/136685783-69435e2e-8580-4254-
 
 
 # ✨애플리케이션 실행영상
-https://user-images.githubusercontent.com/58774664/136656792-0b65ea74-449f-4061-b1e9-e3987fb32381.mp4
+https://user-images.githubusercontent.com/58774664/136877227-b380405a-3f72-4779-81dd-ef783e64af78.mp4
