@@ -6,6 +6,9 @@ import numpy as np
 import pytesseract
 import re
 
+
+#pytesseract.pytesseract.tesseract_cmd='C:/Program Files/Tesseract-OCR/tesseract.exe'
+
 class prep:
 
     # 파일경로 설정
@@ -29,11 +32,11 @@ class prep:
     def find_8seg(self):
 
         src_roi = dict()    # 좌표를 저장할 딕셔너리 생성
-        src_file = self.file_path + '/' + self.src_name + '.jpg'
+        src_file = '.'+self.file_path + '/' + self.src_name + '.jpg'
         print(f"- 수행파일:{src_file}")  # 확인
 
         # 좌표를 저장할 경로 생성
-        roi_path = '../static/img/'  #+ self.src_name
+        roi_path = './static/img'  #+ self.src_name
         self.create_path(roi_path)
         print(f"- 저장경로:{roi_path}")
 
